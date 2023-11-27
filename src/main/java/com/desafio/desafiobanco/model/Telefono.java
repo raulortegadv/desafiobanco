@@ -8,4 +8,6 @@ import java.io.Serializable;
 public class Telefono implements Serializable {
 
     private String number;
+    private String cityCode;
+    private String contryCode;
 }

@@ -29,6 +29,7 @@ public class Usuario {
     private String email;
 
     @Column(name = "password", nullable = false)
+    @Pattern(regexp="^(?=\\w*\\d)(?=\\w*[A-Z])(?=\\w*[a-z])\\S{8,16}$")
     @NotEmpty
     @NotNull
     private String password;
@@ -41,4 +42,7 @@ public class Usuario {
 
     @Column(name = "telefonos", length = 1000, nullable = true)
     private Telefono[] telefonos;
+
+    @Column(name="token", length = 1000)
+    private String token;
 }

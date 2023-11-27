@@ -3,15 +3,22 @@ package com.desafio.desafiobanco.controller;
 import com.desafio.desafiobanco.model.Mensaje;
 import com.desafio.desafiobanco.model.Usuario;
 import com.desafio.desafiobanco.service.UsuarioService;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RestController
@@ -59,7 +66,7 @@ public class UsuarioController {
     }
 
     @PutMapping("/actualizarUsuario/{id}")
-    public ResponseEntity<?> actualizarTorre(@PathVariable("id") Long id , @Valid @RequestBody Usuario usuario, Errors errors){
+    public ResponseEntity<?> actualizarUsuario(@PathVariable("id") Long id , @Valid @RequestBody Usuario usuario, Errors errors){
         if(!usuarioService.existsById(id)){
             return new ResponseEntity(new Mensaje("Usuario no existe"), HttpStatus.NOT_FOUND);
         }

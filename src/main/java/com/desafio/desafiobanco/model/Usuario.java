@@ -43,6 +43,9 @@ public class Usuario {
     @Column(name = "telefonos", length = 1000, nullable = true)
     private Telefono[] telefonos;
 
+    @Column(name = "isactive")
+    private int isActive;
+
     @Column(name="token", length = 1000)
     private String token;
 }

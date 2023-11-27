@@ -28,6 +28,7 @@ public class UsuarioServiceImpl implements UsuarioService{
         usuario.setFechaCreacion(LocalDateTime.now());
         usuario.setUltimaActualizacion(LocalDateTime.now());
         usuario.setToken(token);
+        usuario.setIsActive(1);
         return usuarioRepository.save(usuario);
     }
 
@@ -37,8 +38,8 @@ public class UsuarioServiceImpl implements UsuarioService{
     }
 
     @Override
-    public void deleteUsuario(Long usuarioId){
-        usuarioRepository.deleteById(usuarioId);
+    public Usuario deleteUsuario(Usuario usuario){
+        return usuarioRepository.save(usuario);
     }
 
     @Override

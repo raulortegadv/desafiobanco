@@ -51,10 +51,13 @@ public class UsuarioController {
     public ResponseEntity<?> deleteUsuario(@PathVariable Long usuarioId){
         if(!usuarioService.existsById(usuarioId)){
             return new ResponseEntity(new Mensaje("Usuario no existe"), HttpStatus.NOT_FOUND);
+        }else {
+            Usuario u = usuarioService.findById(usuarioId).get();
+            u.setIsActive(0);
+            usuarioService.deleteUsuario(u);
+            log.info("Usuario Eliminado");
+            return new ResponseEntity(new Mensaje("Usuario no eliminado"), HttpStatus.OK);
         }
-        log.info("Usuario Eliminado");
-        usuarioService.deleteUsuario(usuarioId);
-        return new ResponseEntity<>(new Mensaje("Usuario Eliminado"),HttpStatus.OK);
     }
 
     @GetMapping("{id}")
@@ -84,6 +87,7 @@ public class UsuarioController {
         u.setEmail(usuario.getEmail());
         u.setPassword(usuario.getPassword());
         u.setUltimaActualizacion(LocalDateTime.now());
+        u.setTelefonos(usuario.getTelefonos());
         return new ResponseEntity(usuarioService.updateUsuario(u), HttpStatus.OK);
     }
 

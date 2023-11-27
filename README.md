@@ -4,6 +4,10 @@
 
 # http://localhost:7979/swagger-ui/index.html
 
+# Dependencias necesarias:
+
+## Java 11, gradle 6.8
+
 ### Para iniciar el proyecto se debe importar a tu ide, en mi caso
 ### utilizo intelliJ, se deben descargar las dependencias, esto se puede realizar de la siguiente manera:
 

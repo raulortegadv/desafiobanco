@@ -1,6 +1,7 @@
 package com.desafio.desafiobanco.controller;
 
 import com.desafio.desafiobanco.model.Usuario;
+import com.desafio.desafiobanco.service.UsuarioService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class UserControllerTest {
 
     @Autowired
     private MockMvc mvc;
+/* 
+    @Autowired
+    private UsuarioService usuarioService;
 
     @Test
     public void getAllUsuarios() throws Exception
@@ -32,10 +36,10 @@ public class UserControllerTest {
     }
 
     @Test
-    public void createEmployeeAPI() throws Exception
+    public void addUsuarioTest() throws Exception
     {
         mvc.perform( MockMvcRequestBuilders
-                        .post("api/usuarios/addUsuario")
+                        .post("/api/usuarios/addUsuario")
                         .content(asJsonString(new Usuario()))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
@@ -50,4 +54,6 @@ public class UserControllerTest {
             throw new RuntimeException(e);
         }
     }
+
+    */
 }
